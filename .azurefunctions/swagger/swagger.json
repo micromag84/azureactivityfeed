@@ -1,0 +1,103 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Activity Feed Api",
+		"version": "1.0.0"
+	},
+	"host": "activityfeedpipelinefunctions.azurewebsites.net",
+	"basePath": "/",
+	"schemes": [
+		"https"
+	],
+	"paths": {
+		"/api/ReceiveExternalActivity": {
+			"post": {
+				"operationId": "ReceiveActivityFeedItem",
+				"produces": [],
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "The message",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/message"
+						}
+					}
+				],
+				"summary": "Endpoint to post an activity to the feed",
+				"responses": {
+					"200": {
+						"description": "Success operation"
+					},
+					"400": {
+						"description": "Model is not valid operation"
+					}
+				},
+				"security": [
+					{
+						"apikeyQuery": []
+					}
+				]
+			}
+		}
+	},
+	"definitions": {
+		"message": {
+			"type": "object",
+			"properties": {
+				"Title": {
+					"type": "string",
+					"description": "The short title (limited to 120 chars)"
+				},
+				"Text": {
+					"type": "string",
+					"description": "Optional longer text (limited to 280 chars)"
+				},
+				"Url": {
+					"type": "string",
+					"description": "A resource to link to"
+				},
+				"MediaUrl": {
+					"type": "string",
+					"description": "A media url to display"
+				},
+				"Source": {
+					"type": "string",
+					"enum": [
+						"DynamicsCrm",
+						"Twitter",
+						"Yammer",
+						"Facebook",
+						"Pipedrive",
+						"Instagram",
+						"Youtube",
+						"MicrosoftStream",
+						"Menuplan",
+						"Stocks",
+						"Weather",
+						"Sport",
+						"Travel",
+						"Event",
+						"HR",
+						"Birthday",
+						"Slack",
+						"Postman",
+						"Other"
+					],
+					"description": "A key to identify the app generating the message in order to display it differently in the feed"
+				}
+			}
+		}
+	},
+	"securityDefinitions": {
+		"apikeyQuery": {
+			"type": "apiKey",
+			"name": "code",
+			"in": "query"
+		}
+	}
+}

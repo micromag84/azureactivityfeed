@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivityFeedPipeline.Functions", "ActivityFeedPipeline.Functions\ActivityFeedPipeline.Functions.csproj", "{35C678C7-F2D7-4700-9931-0232A784FFFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityFeedPipeline.Web", "ActivityFeedPipeline.Web\ActivityFeedPipeline.Web.csproj", "{5C393814-AE83-4BD3-A0D6-A53C1B3E0C7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35C678C7-F2D7-4700-9931-0232A784FFFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35C678C7-F2D7-4700-9931-0232A784FFFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35C678C7-F2D7-4700-9931-0232A784FFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35C678C7-F2D7-4700-9931-0232A784FFFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C393814-AE83-4BD3-A0D6-A53C1B3E0C7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C393814-AE83-4BD3-A0D6-A53C1B3E0C7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C393814-AE83-4BD3-A0D6-A53C1B3E0C7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C393814-AE83-4BD3-A0D6-A53C1B3E0C7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C16A3B36-AE96-4D39-8782-CA65A5F92C57}
+	EndGlobalSection
+EndGlobal

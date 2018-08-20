@@ -1,0 +1,35 @@
+﻿@page
+@model IndexModel
+@{
+	ViewData["Title"] = "Activity Feed";
+}
+
+<div>
+	<table class="table">
+
+		@{
+
+			foreach (var feedItem in Model.FeedItems)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => feedItem.Id)<br />
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => feedItem.Source)<br />
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => feedItem.Title)<br />
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => feedItem.Url)<br />
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => feedItem.Created)<br />
+					</td>
+				</tr>
+			}
+		}
+	</table>
+
+</div>
