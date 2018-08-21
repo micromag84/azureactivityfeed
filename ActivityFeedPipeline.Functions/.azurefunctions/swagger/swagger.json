@@ -10,7 +10,7 @@
 		"https"
 	],
 	"paths": {
-		"/api/ReceiveExternalActivity": {
+		"/api/ReceiveActivityFeedItem": {
 			"post": {
 				"operationId": "ReceiveActivityFeedItem",
 				"produces": [],
