@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ActivityFeedPipeline.Web.Pages
 {
@@ -12,7 +8,7 @@ namespace ActivityFeedPipeline.Web.Pages
 
 		public void OnGet()
 		{
-			Message = "Your application description page.";
+			Message = "Async activity feed pipeline in Azure.";
 		}
 	}
 }

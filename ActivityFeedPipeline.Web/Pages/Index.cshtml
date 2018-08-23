@@ -9,20 +9,48 @@
 
 		@{
 
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.FeedItems[0].Source)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.FeedItems[0].Title)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.FeedItems[0].Text)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.FeedItems[0].Url)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.FeedItems[0].MediaUrl)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.FeedItems[0].Created)
+			</th>
+		</tr>
+
 			foreach (var feedItem in Model.FeedItems)
 			{
 				<tr>
-					<td>
-						@Html.DisplayFor(modelItem => feedItem.Id)<br />
-					</td>
 					<td>
 						@Html.DisplayFor(modelItem => feedItem.Source)<br />
 					</td>
 					<td>
 						@Html.DisplayFor(modelItem => feedItem.Title)<br />
 					</td>
+					<td style="width: 50%">
+						@Html.DisplayFor(modelItem => feedItem.Text)<br />
+					</td>
 					<td>
 						@Html.DisplayFor(modelItem => feedItem.Url)<br />
+					</td>
+					<td>
+						@if (!string.IsNullOrEmpty(feedItem.MediaUrl))
+						{
+							<img asp- style="max-height: 100px" src="@Url.Content(feedItem.MediaUrl)" alt="Image"/>
+
+						}
 					</td>
 					<td>
 						@Html.DisplayFor(modelItem => feedItem.Created)<br />
