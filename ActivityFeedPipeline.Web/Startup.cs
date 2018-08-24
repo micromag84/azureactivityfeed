@@ -1,10 +1,7 @@
-using System;
 using ActivityFeedPipeline.Web.Core;
 using ActivityFeedPipeline.Web.CosmosDb;
-using ActivityFeedPipeline.Web.Infrastructure;
 using ActivityFeedPipeline.Web.Storage;
 using JetBrains.Annotations;
-using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -37,13 +34,15 @@ namespace ActivityFeedPipeline.Web
 			});
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
 			services.AddOptions();
 			services.Configure<DocumentClientOptions>(Configuration.GetSection("DocumentClient"));
-			services.AddMediatR();
 
 			services.AddTransient<IDocumentTypedCollectionClient<ActivityFeedQueueItem>, DocumentTypedCollectionClient<ActivityFeedQueueItem>>();
+
 			AddStorageQueue(services, Configuration);
-			AddHostedServices(services);
+
+			services.AddSingleton<IHostedService, ActivityItemsHostedService>();
 		}
 
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -64,7 +63,7 @@ namespace ActivityFeedPipeline.Web
 
 			app.UseMvc();
 
-			InitializeDocumentCollections(app.ApplicationServices);
+			app.ApplicationServices.GetService<IDocumentTypedCollectionClient<ActivityFeedQueueItem>>().Initialize();
 		}
 
 		private static void AddStorageQueue(IServiceCollection services, IConfiguration configuration)
@@ -73,24 +72,6 @@ namespace ActivityFeedPipeline.Web
 
 			services.AddScoped<IStorageQueueClient, AzureStorageQueueClient>(provider =>
 				new AzureStorageQueueClient(connectionString, provider.GetRequiredService<ILogger<AzureStorageQueueClient>>()));
-		}
-
-		private static void AddHostedServices(IServiceCollection services)
-		{
-			void AddMediatorTriggerHostedService<T>(TimeSpan delayInterval) where T : IRequest, new()
-			{
-				services.AddSingleton<IHostedService, MediatorTriggerHostedService<T>>(provider => new MediatorTriggerHostedService<T>(
-					provider.GetService<IServiceScopeFactory>(),
-					provider.GetService<ILogger<MediatorTriggerHostedService<T>>>(),
-					delayInterval));
-			}
-
-			AddMediatorTriggerHostedService<HandleActivityItemsCommand>(TimeSpan.FromSeconds(10));
-		}
-
-		private static void InitializeDocumentCollections(IServiceProvider serviceProvider)
-		{
-			serviceProvider.GetService<IDocumentTypedCollectionClient<ActivityFeedQueueItem>>().Initialize();
 		}
 	}
 }

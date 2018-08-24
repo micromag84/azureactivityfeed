@@ -7,7 +7,6 @@ Ready to use activity feed using an async pipeline consisting of:
 - ASP.NET Core 2.1 IHostedService
 - Azure Cosmos Document DB
 - ASP.NET Core Razor Page to display the feed
-- [MediatR](https://github.com/jbogard/MediatR) to dispatch commands (vertical slice)
 
 # Introduction
 

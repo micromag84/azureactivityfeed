@@ -4,6 +4,11 @@
     <AzureFunctionsVersion>v1</AzureFunctionsVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".azurefunctions\swagger\swagger.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2018.2.1" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.14" />
   </ItemGroup>
